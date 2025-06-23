@@ -1,0 +1,156 @@
+[{
+  "_id": 1,
+  "clienteId": 1,
+  "productos": [
+    {
+      "productoId": 1,
+      "cantidad": 2
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-01T10:30:00.000Z"
+  },
+  "total": 10000
+},
+{
+  "_id": 2,
+  "clienteId": 2,
+  "productos": [
+    {
+      "productoId": 2,
+      "cantidad": 1
+    },
+    {
+      "productoId": 4,
+      "cantidad": 2
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-03T12:00:00.000Z"
+  },
+  "total": 19000
+},
+{
+  "_id": 3,
+  "clienteId": 3,
+  "productos": [
+    {
+      "productoId": 7,
+      "cantidad": 1
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-05T08:45:00.000Z"
+  },
+  "total": 12000
+},
+{
+  "_id": 4,
+  "clienteId": 4,
+  "productos": [
+    {
+      "productoId": 3,
+      "cantidad": 2
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-07T14:20:00.000Z"
+  },
+  "total": 17000
+},
+{
+  "_id": 5,
+  "clienteId": 5,
+  "productos": [
+    {
+      "productoId": 6,
+      "cantidad": 1
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-10T17:00:00.000Z"
+  },
+  "total": 10000
+},
+{
+  "_id": 6,
+  "clienteId": 6,
+  "productos": [
+    {
+      "productoId": 2,
+      "cantidad": 1
+    },
+    {
+      "productoId": 3,
+      "cantidad": 1
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-12T09:15:00.000Z"
+  },
+  "total": 15500
+},
+{
+  "_id": 7,
+  "clienteId": 7,
+  "productos": [
+    {
+      "productoId": 8,
+      "cantidad": 1
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-13T11:45:00.000Z"
+  },
+  "total": 9000
+},
+{
+  "_id": 8,
+  "clienteId": 8,
+  "productos": [
+    {
+      "productoId": 9,
+      "cantidad": 2
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-14T13:00:00.000Z"
+  },
+  "total": 30000
+},
+{
+  "_id": 9,
+  "clienteId": 9,
+  "productos": [
+    {
+      "productoId": 10,
+      "cantidad": 1
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-15T19:30:00.000Z"
+  },
+  "total": 13000
+},
+{
+  "_id": 10,
+  "clienteId": 10,
+  "productos": [
+    {
+      "productoId": 1,
+      "cantidad": 1
+    },
+    {
+      "productoId": 2,
+      "cantidad": 1
+    },
+    {
+      "productoId": 3,
+      "cantidad": 1
+    }
+  ],
+  "fecha": {
+    "$date": "2025-06-16T16:00:00.000Z"
+  },
+  "total": 20500
+}]

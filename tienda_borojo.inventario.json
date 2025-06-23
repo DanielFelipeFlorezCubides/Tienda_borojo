@@ -1,0 +1,90 @@
+[{
+  "_id": 1,
+  "productoId": 1,
+  "lote": "L001",
+  "cantidad": 100,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 2,
+  "productoId": 2,
+  "lote": "L002",
+  "cantidad": 80,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 3,
+  "productoId": 3,
+  "lote": "L003",
+  "cantidad": 60,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 4,
+  "productoId": 4,
+  "lote": "L004",
+  "cantidad": 70,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 5,
+  "productoId": 5,
+  "lote": "L005",
+  "cantidad": 50,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 6,
+  "productoId": 6,
+  "lote": "L006",
+  "cantidad": 30,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 7,
+  "productoId": 7,
+  "lote": "L007",
+  "cantidad": 40,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 8,
+  "productoId": 8,
+  "lote": "L008",
+  "cantidad": 25,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 9,
+  "productoId": 9,
+  "lote": "L009",
+  "cantidad": 15,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+},
+{
+  "_id": 10,
+  "productoId": 10,
+  "lote": "L010",
+  "cantidad": 20,
+  "entrada": {
+    "$date": "2025-06-01T08:00:00.000Z"
+  }
+}]

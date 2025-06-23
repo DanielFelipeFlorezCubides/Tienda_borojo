@@ -1,0 +1,125 @@
+[{
+  "_id": 1,
+  "nombre": "Carlos Ramírez",
+  "email": "carlos@email.com",
+  "compras": [
+    1,
+    2
+  ],
+  "preferencias": [
+    "natural",
+    "bebida"
+  ]
+},
+{
+  "_id": 2,
+  "nombre": "Diana Suárez",
+  "email": "diana@email.com",
+  "compras": [
+    2,
+    4
+  ],
+  "preferencias": [
+    "dulce",
+    "snack"
+  ]
+},
+{
+  "_id": 3,
+  "nombre": "Juan Torres",
+  "email": "juan@email.com",
+  "compras": [
+    1,
+    7
+  ],
+  "preferencias": [
+    "energético"
+  ]
+},
+{
+  "_id": 4,
+  "nombre": "Ana López",
+  "email": "ana@email.com",
+  "compras": [
+    3,
+    5
+  ],
+  "preferencias": [
+    "bebe",
+    "desayuno"
+  ]
+},
+{
+  "_id": 5,
+  "nombre": "Luis Martínez",
+  "email": "luis@email.com",
+  "compras": [
+    6
+  ],
+  "preferencias": [
+    "frío",
+    "postre"
+  ]
+},
+{
+  "_id": 6,
+  "nombre": "Sofía Gómez",
+  "email": "sofia@email.com",
+  "compras": [
+    2,
+    3,
+    4
+  ],
+  "preferencias": [
+    "dulce"
+  ]
+},
+{
+  "_id": 7,
+  "nombre": "Felipe Castro",
+  "email": "felipe@email.com",
+  "compras": [
+    7,
+    8
+  ],
+  "preferencias": [
+    "fuerte",
+    "natural"
+  ]
+},
+{
+  "_id": 8,
+  "nombre": "Laura Pérez",
+  "email": "laura@email.com",
+  "compras": [
+    9
+  ],
+  "preferencias": [
+    "cuidado"
+  ]
+},
+{
+  "_id": 9,
+  "nombre": "Camilo Rojas",
+  "email": "camilo@email.com",
+  "compras": [
+    10
+  ],
+  "preferencias": [
+    "artesanal"
+  ]
+},
+{
+  "_id": 10,
+  "nombre": "Valentina Ortiz",
+  "email": "valentina@email.com",
+  "compras": [
+    1,
+    2,
+    3
+  ],
+  "preferencias": [
+    "natural",
+    "dulce"
+  ]
+}]

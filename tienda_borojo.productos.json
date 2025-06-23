@@ -1,0 +1,110 @@
+[{
+  "_id": 1,
+  "nombre": "Borojó fresco",
+  "categoria": "Fruta",
+  "precio": 5000,
+  "stock": 30,
+  "tags": [
+    "natural",
+    "orgánico"
+  ]
+},
+{
+  "_id": 2,
+  "nombre": "Jugo de borojó",
+  "categoria": "Bebida",
+  "precio": 7000,
+  "stock": 50,
+  "tags": [
+    "refrescante",
+    "natural"
+  ]
+},
+{
+  "_id": 3,
+  "nombre": "Mermelada de borojó",
+  "categoria": "Alimento",
+  "precio": 8500,
+  "stock": 25,
+  "tags": [
+    "dulce",
+    "desayuno"
+  ]
+},
+{
+  "_id": 4,
+  "nombre": "Galletas con borojó",
+  "categoria": "Snack",
+  "precio": 6000,
+  "stock": 40,
+  "tags": [
+    "dulce",
+    "snack"
+  ]
+},
+{
+  "_id": 5,
+  "nombre": "Compota de borojó",
+  "categoria": "Bebé",
+  "precio": 6500,
+  "stock": 20,
+  "tags": [
+    "suave",
+    "saludable"
+  ]
+},
+{
+  "_id": 6,
+  "nombre": "Helado de borojó",
+  "categoria": "Postre",
+  "precio": 10000,
+  "stock": 10,
+  "tags": [
+    "frío",
+    "postre"
+  ]
+},
+{
+  "_id": 7,
+  "nombre": "Concentrado de borojó",
+  "categoria": "Bebida",
+  "precio": 12000,
+  "stock": 15,
+  "tags": [
+    "energético",
+    "fuerte"
+  ]
+},
+{
+  "_id": 8,
+  "nombre": "Borojó deshidratado",
+  "categoria": "Fruta",
+  "precio": 9000,
+  "stock": 18,
+  "tags": [
+    "natural",
+    "conservado"
+  ]
+},
+{
+  "_id": 9,
+  "nombre": "Aceite de borojó",
+  "categoria": "Cosmético",
+  "precio": 15000,
+  "stock": 8,
+  "tags": [
+    "piel",
+    "cuidado"
+  ]
+},
+{
+  "_id": 10,
+  "nombre": "Cerveza artesanal de borojó",
+  "categoria": "Bebida",
+  "precio": 13000,
+  "stock": 12,
+  "tags": [
+    "artesanal",
+    "alcohol"
+  ]
+}]

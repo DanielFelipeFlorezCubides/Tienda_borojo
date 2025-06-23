@@ -1,0 +1,59 @@
+[{
+  "_id": 1,
+  "nombre": "Frutas del Chocó",
+  "contacto": "0987654321",
+  "productos": [
+    "Borojó fresco",
+    "Borojó deshidratado"
+  ]
+},
+{
+  "_id": 2,
+  "nombre": "Jugos Naturales S.A.",
+  "contacto": "0987654322",
+  "productos": [
+    "Jugo de borojó",
+    "Concentrado de borojó"
+  ]
+},
+{
+  "_id": 3,
+  "nombre": "Dulces Pacífico",
+  "contacto": "0987654323",
+  "productos": [
+    "Mermelada de borojó",
+    "Galletas con borojó"
+  ]
+},
+{
+  "_id": 4,
+  "nombre": "Baby Foods",
+  "contacto": "0987654324",
+  "productos": [
+    "Compota de borojó"
+  ]
+},
+{
+  "_id": 5,
+  "nombre": "Postres Fríos",
+  "contacto": "0987654325",
+  "productos": [
+    "Helado de borojó"
+  ]
+},
+{
+  "_id": 6,
+  "nombre": "Cosmética Natural",
+  "contacto": "0987654326",
+  "productos": [
+    "Aceite de borojó"
+  ]
+},
+{
+  "_id": 7,
+  "nombre": "Cervecería Artesanal",
+  "contacto": "0987654327",
+  "productos": [
+    "Cerveza artesanal de borojó"
+  ]
+}]
