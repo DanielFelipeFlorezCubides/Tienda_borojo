@@ -367,16 +367,212 @@ function verificarStock(productoId, cantidadDeseada) {
 
 ![FD3](image-21.png)
 ### 6. Transacciones
+```javascript
 - ✅ Simular venta con transacción
+// Iniciar sesión y transacción
+const session = db.getMongo().startSession();
+
+try {
+  session.startTransaction();
+  
+  // Datos de la venta
+  const ventaData = {
+    clienteId: 6,
+    productoId: 2, // Jugo de borojó
+    cantidad: 3,
+    precioUnitario: 7000
+  };
+  
+  // Operación 1: Descontar del stock
+  const resultadoStock = db.productos.updateOne(
+    { 
+      _id: ventaData.productoId, 
+      stock: { $gte: ventaData.cantidad } 
+    },
+    { $inc: { stock: -ventaData.cantidad } },
+    { session: session }
+  );
+  
+  if (resultadoStock.modifiedCount === 0) {
+    throw new Error("Stock insuficiente o producto no encontrado");
+  }
+  
+  // Operación 2: Insertar la venta
+  const nuevaVenta = {
+    _id: db.ventas.countDocuments() + 1,
+    clienteId: ventaData.clienteId,
+    productos: [{
+      productoId: ventaData.productoId,
+      cantidad: ventaData.cantidad
+    }],
+    fecha: new Date(),
+    total: ventaData.cantidad * ventaData.precioUnitario
+  };
+  
+  const resultadoVenta = db.ventas.insertOne(nuevaVenta, { session: session });
+  
+  // Confirmar transacción
+  session.commitTransaction();
+  print("✅ Venta procesada exitosamente");
+  print(`Nueva venta ID: ${resultadoVenta.insertedId}`);
+  
+} catch (error) {
+  session.abortTransaction();
+  print(`❌ Transacción abortada: ${error.message}`);
+} finally {
+  session.endSession();
+}
+```
+
+
 - ✅ Entrada de inventario con transacción
+```javascript
+// Iniciar sesión y transacción
+const session2 = db.getMongo().startSession();
+
+try {
+  session2.startTransaction();
+  
+  // Datos del inventario
+  const inventarioData = {
+    productoId: 8, // Borojó deshidratado
+    lote: "L011",
+    cantidad: 25
+  };
+  
+  // Operación 1: Insertar registro en inventario
+  const nuevoInventario = {
+    _id: db.inventario.countDocuments() + 1,
+    productoId: inventarioData.productoId,
+    lote: inventarioData.lote,
+    cantidad: inventarioData.cantidad,
+    entrada: new Date()
+  };
+  
+  const resultadoInventario = db.inventario.insertOne(
+    nuevoInventario, 
+    { session: session2 }
+  );
+  
+  // Operación 2: Aumentar stock del producto
+  const resultadoStock = db.productos.updateOne(
+    { _id: inventarioData.productoId },
+    { $inc: { stock: inventarioData.cantidad } },
+    { session: session2 }
+  );
+  
+  if (resultadoStock.modifiedCount === 0) {
+    throw new Error("No se pudo actualizar el stock del producto");
+  }
+  
+  // Confirmar transacción
+  session2.commitTransaction();
+  print("✅ Entrada de inventario procesada exitosamente");
+  print(`Nuevo registro inventario ID: ${resultadoInventario.insertedId}`);
+  print(`Stock aumentado en ${inventarioData.cantidad} unidades`);
+  
+} catch (error) {
+  session2.abortTransaction();
+  print(`❌ Transacción de inventario abortada: ${error.message}`);
+} finally {
+  session2.endSession();
+}
+```
+
+
 - ✅ Operación de devolución
+```javascript
+// Iniciar sesión y transacción
+const session3 = db.getMongo().startSession();
+
+try {
+  session3.startTransaction();
+  
+  // Buscar la última venta para devolver
+  const ventaADevolver = db.ventas.findOne({}, { sort: { _id: -1 } });
+  
+  if (!ventaADevolver) {
+    throw new Error("No hay ventas para devolver");
+  }
+  
+  print(`Procesando devolución de venta ID: ${ventaADevolver._id}`);
+  
+  // Operación 1: Restaurar stock de cada producto vendido
+  for (let producto of ventaADevolver.productos) {
+    const resultadoStock = db.productos.updateOne(
+      { _id: producto.productoId },
+      { $inc: { stock: producto.cantidad } },
+      { session: session3 }
+    );
+    
+    if (resultadoStock.modifiedCount === 0) {
+      throw new Error(`No se pudo restaurar stock del producto ${producto.productoId}`);
+    }
+    
+    print(`Stock restaurado: +${producto.cantidad} unidades del producto ${producto.productoId}`);
+  }
+  
+  // Operación 2: Eliminar la venta
+  const resultadoEliminacion = db.ventas.deleteOne(
+    { _id: ventaADevolver._id },
+    { session: session3 }
+  );
+  
+  if (resultadoEliminacion.deletedCount === 0) {
+    throw new Error("No se pudo eliminar la venta");
+  }
+  
+  // Confirmar transacción
+  session3.commitTransaction();
+  print("✅ Devolución procesada exitosamente");
+  print(`Venta ${ventaADevolver._id} eliminada`);
+  print(`Total devuelto: $${ventaADevolver.total}`);
+  
+} catch (error) {
+  session3.abortTransaction();
+  print(`❌ Transacción de devolución abortada: ${error.message}`);
+} finally {
+  session3.endSession();
+}
+```
+
 
 ### 7. Indexación
 - ✅ Índice en campo `nombre` de productos
-- ✅ Índice compuesto `categoria` y `precio`
-- ✅ Índice en `email` de clientes
-- ✅ Análisis con `explain()`
+```javascript
+// Crear índice simple en el campo nombre
+db.productos.createIndex({ nombre: 1 })
 
+// Verificar que el índice se creó correctamente
+db.productos.getIndexes()
+```
+- ✅ Índice compuesto `categoria` y `precio`
+```javascript
+// Crear índice compuesto (categoria ascendente, precio descendente)
+db.productos.createIndex({ categoria: 1, precio: -1 })
+
+// Verificar índices de la colección productos
+db.productos.getIndexes()
+```
+- ✅ Índice en `email` de clientes
+```javascript
+// Crear índice único en email para evitar duplicados
+db.clientes.createIndex({ email: 1 }, { unique: true })
+
+// Verificar índices de la colección clientes
+db.clientes.getIndexes()
+```
+- ✅ Análisis con `explain()`
+```javascript
+// Consulta simple usando el índice de nombre
+db.productos.find({ nombre: "Borojó fresco" }).explain("executionStats")
+
+// Consulta con patrón regex (puede no usar índice eficientemente)
+db.productos.find({ nombre: /^Boro/ }).explain("executionStats")
+
+// Consulta que definitivamente usa el índice
+db.productos.find({ nombre: "Jugo de borojó" }).explain("executionStats")
+```
 
 ## Tecnologías Utilizadas
 - **MongoDB 7.0+**
