@@ -265,11 +265,107 @@ db.productos.aggregate([
 ```
 
 ![AF5](image-18.png)
-### 5. Funciones JavaScript (script.js)
+### 5. Funciones definidas
 - ✅ `calcularDescuento(precio, porcentaje)`
-- ✅ `clienteActivo(idCliente)`
-- ✅ `verificarStock(productoId, cantidadDeseada)`
+```javascript
+function calcularDescuento(precio, porcentaje) {
+  if (typeof precio !== "number" || typeof porcentaje !== "number") {
+    throw new Error("Los parámetros deben ser números");
+  }
+  
+  if (precio < 0 || porcentaje < 0 || porcentaje > 100) {
+    throw new Error("Precio debe ser positivo y porcentaje entre 0-100");
+  }
+  
+  const descuento = (precio * porcentaje) / 100;
+  const precioFinal = precio - descuento;
+  
+  return {
+    precioOriginal: precio,
+    porcentajeDescuento: porcentaje,
+    montoDescuento: descuento,
+    precioFinal: precioFinal,
+    ahorroTotal: descuento
+  };
+}
+```
 
+![FD1](image-20.png)
+- ✅ `clienteActivo(idCliente)`
+```javascript
+function clienteActivo(idCliente) {
+  if (typeof idCliente !== "number") {
+    throw new Error("El ID del cliente debe ser un número");
+  }
+  
+  const cliente = db.clientes.findOne({ _id: idCliente });
+  
+  if (!cliente) {
+    return {
+      existe: false,
+      activo: false,
+      mensaje: `Cliente con ID ${idCliente} no encontrado`
+    };
+  }
+  
+  const cantidadCompras = cliente.compras.length;
+  const esActivo = cantidadCompras > 3;
+  
+  return {
+    existe: true,
+    clienteId: idCliente,
+    nombre: cliente.nombre,
+    email: cliente.email,
+    cantidadCompras: cantidadCompras,
+    activo: esActivo,
+    mensaje: esActivo 
+      ? `Cliente ${cliente.nombre} es ACTIVO (${cantidadCompras} compras)`
+      : `Cliente ${cliente.nombre} no es activo (${cantidadCompras} compras, necesita más de 3)`
+  };
+}
+```
+
+![FD2](image-19.png)
+- ✅ `verificarStock(productoId, cantidadDeseada)`
+```javascript
+function verificarStock(productoId, cantidadDeseada) {
+  if (typeof productoId !== "number" || typeof cantidadDeseada !== "number") {
+    throw new Error("Los parámetros deben ser números");
+  }
+  
+  if (cantidadDeseada <= 0) {
+    throw new Error("La cantidad deseada debe ser mayor a 0");
+  }
+  
+  const producto = db.productos.findOne({ _id: productoId });
+  
+  if (!producto) {
+    return {
+      existe: false,
+      disponible: false,
+      mensaje: `Producto con ID ${productoId} no encontrado`
+    };
+  }
+  
+  const stockDisponible = producto.stock;
+  const hayStock = stockDisponible >= cantidadDeseada;
+  
+  return {
+    existe: true,
+    productoId: productoId,
+    nombre: producto.nombre,
+    stockActual: stockDisponible,
+    cantidadSolicitada: cantidadDeseada,
+    disponible: hayStock,
+    faltante: hayStock ? 0 : cantidadDeseada - stockDisponible,
+    mensaje: hayStock 
+      ? `Stock suficiente: ${stockDisponible} disponibles, solicita ${cantidadDeseada}`
+      : `Stock insuficiente: ${stockDisponible} disponibles, solicita ${cantidadDeseada}, faltan ${cantidadDeseada - stockDisponible}`
+  };
+}
+```
+
+![FD3](image-21.png)
 ### 6. Transacciones
 - ✅ Simular venta con transacción
 - ✅ Entrada de inventario con transacción
